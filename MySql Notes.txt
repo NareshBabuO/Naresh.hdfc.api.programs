@@ -1,0 +1,279 @@
+MySql
+
+SQL :-Structure query langauage
+
+used to communicate database and data
+
+database 
+
+*DDL :- (Data Defination Langauge):-
+1)Create
+2)alter
+3) drop
+4) truncate
+
+syntax for creating database:-
+
+CREATE database database_name;
+
+syntax for creating table:  CREATE table table_name(column_name data_type,column_name2 data_type);
+
+*DML :- Data Manupulation Langauge
+
+syntax for inserting data into table:  INSERT into table_name values(data1,data2,data3);
+====================================================================================================
+16.09.2022
+1)how to drop
+select * FROM state;
+DROP state;
+
+2)  ALTER:-
+ * add new column to the existing table
+  * change the column datatype from the table
+  * remove the column from the table
+--------------------------------------------------------
+3) Syntax for adding column to existing table
+syntax==:- ALTER TABLE table_name ADD COLUMN column_name datatype;
+----------------------------------------------------------
+4) synatx for changing the column datatype;
+synatx==:-ALTER TABLE table_name MODIFY COLUMN  column_name newdatatype;
+---------------------------------------------
+5) Droping column in a TABLE
+synatx ==:- ALTER TABLE table_name DROP column_name;
+------------------------------------------------------------------
+6) Rename column name;
+syntax==:- ALTER TABLE table_name RENAME COLUMN old_column_name to new_column_name;
+-------------------------------------------------------------------
+19.09.2022
+7)Rename table name;
+Syntax==:-rename table oldtable to new table;
+----------------------------------------------------------------
+8) Drop table ;
+Syntax==:-drop table table_name;
+-------------------------------------
+DML:Create and insert inside the table and use the table.
+Curd oparations:==:-INSERT,UPDATE,DELETE,SELECT.
+----------------------------------------------------
+10)WHERE==:-used to fliter the data based on the Conditaion;
+syntax==:-
+----------------------------------------------------
+11)UPDATE:
+Syntax===:-UPDATE TABLE table_name SET COLUMN_NAME = VALUE WHERE CONDITION(old value);
+ex==:-UPDATE airport.institute SET Qualification='BSc' where Qualification='Any Degree';
+------------------------------------------------
+12)DELETE
+Syntax==:-Delete  FROM tabel_name where CONDITION;
+
+----------------------------------------------------
+13)IN Operator:=To avoid multiple use of OR Condition we use IN Operation.
+synatx==:-SELECT * FROM table_name [/airport.institute\] WHERE CONDITION[totalTriainer in(5,8)];
+--------------------------------------------------------------------
+20.09.2022
+Character Functions===:-
+concat,upper,lower,instr,substr,like
+
+1)CONCAT==:-syntax==:-select Concat(column1,column2)FROM table_name;
+
+2)UPPER==:-syntax==:-SELECT UPPER(column_name) from table_name;
+
+3)LOWER==:-syntax==:-SELECT LOWER(column_name) from table_name;
+
+4)INSTR===:-syntax===:-SELECT INSTR(column_name,'Character')from table_name;
+
+5)SUBSTR==:-syntax===:-SELECT SUBSTR('STRING',startposition,NoOfCharacterStopr)AS alias_Name;(Anything);
+
+6)REVERSE==:-syntax===:-SELECT REVERSE(column_name) from table_name;
+
+SELECT INSTR(Owner,'a')from airport.institute;
+
+7)LIKE===:-LIKE=used for pattern matching
+syntax===:-SELECT column_name Table_name WHERE column_name LIKE 'Character%';here %  means given word ENDS with giver'Character';
+
+syntax===:-SELECT column_name Table_name WHERE column_name LIKE '%Character';here % means given word START with giver'Character';
+
+syntax===:-SELECT column_name Table_name WHERE column_name LIKE '%Character%';here % means given word MIDDLE with giver'Character';
+
+
+
+{{{{{{{{{{{{{{{{{{{{{{{{[
+DATE (19&20)
+
+update airport.institute SET course='Python' where course='Java';
+UPDATE airport.institute SET Qualification='BSc' where Qualification='Any Degree';
+delete from  airport.institute Where StudentName='babu';
+insert into airport.institute values('ram',17582,'Core-Java','btm','rajaji','Xworkz','Omkar',5,8,'Akshara',5,'BE','IT',
+'Online','offline',23000,2,8.20,9.20,3,2019,2,'Core-Java','HTML','CSS','sql','Om Sir','Abhi','Ramesh',5);
+insert into airport.institute values('Dyam',14582,'DataScience','btm','rajaji','Tumkur Uni','Naresh',15,18,'Akash',15,'BE Cs','IT/SoftWares',
+'Online','Online',30000,5,15.25,7.10,30,2015,7,'Java','JEE','DAta','Science','BKM','Ramani','Narahari',10);
+SELECT * FROM airport.institute WHERE StudentName='Naresh' AND course='Python';
+SELECT * FROM airport.institute WHERE StudentName='Ram' or course='Java';
+SELECT * FROM airport.institute WHERE totalTriainer in(5,8);
+SELECT * FROM airport.institute WHERE totalTriainer not in(5,8);
+SELECT * FROM airport.institute WHERE totalTriainer between 18 AND 8;
+
+SELECT CONCAT(ID,Area1)from airport.institute;
+SELECT CONCAT('A','B','C','D') as str;
+/*upper:*/
+select UPPER(course)from airport.institute;
+select LOWER(course)from airport.institute;
+/*instr(instring):*/
+/*it will give the postition of a charator form String*/
+SELECT INSTR('XWORKZODC','R')AS POS;/*POS=AliasName*/
+SELECT INSTR(Owner,'a')from airport.institute;
+/*substr();*/
+SELECT SUBSTR('XWORKZODC',2,4) AS STR;/*STR=AliasName*/
+SELECT SUBSTR(InstituteName,2,4)from airport.institute;
+SELECT SUBSTR(InstituteName,2,4)from airport.institute WHERE ID=1610156; /*Filter perticulor row in column*/
+/*reverse:*/
+SELECT REVERSE(HRName) from airport.institute;
+/*LIKE=used for pattern matching
+% it will match any string of any length*/
+SELECT course FROM airport.institute WHERE course LIKE 'C%';
+SELECT course FROM airport.institute WHERE course LIKE '%e';
+SELECT course FROM airport.institute WHERE course LIKE '%a%';
+/*Duplcate table*/
+CREATE TABLE bank(id int , name varchar(40),ifsc varchar(20),location varchar(30),
+noOfCustomers int,created_at timestamp,created_by varchar(30) default 'sun');
+
+insert INTO bank (id,name,ifsc,location,noOfCustomers,created_at) values(1,'SBI','SBIN3667','BTM',400,NOW());
+insert INTO bank (id,name,ifsc,location,noOfCustomers,created_at) values(2,'ICIC','ICIC784521','KR PURAM',102,NOW());
+SELECT * FROM airport.institute;
+SELECT * FROM airport.bank;
+
+}}}}}}}}}}}}}}}}}]
+
+---------------------------------------------------
+21.09.2022
+8) Order by:sort the data either in ascending order or descending order
+syntax===:-SELECT * FROM table_name where column_name='values' order by;
+
+9)distinct:is to avoid the duplicate values from the column_name;
+syntax===:-SELECT distinct(column_name) from column;
+
+10)To create dupiltae table2 and same values from table1;
+syntax=:-- create table table_name2 as select *from table_name1;
+
+
+11)Aggregate used to perform the calucation from data;
+count,sum,max,min,avg;
+count===:-
+syntax=:-- SELECT COUNT(name) as noOfRows FROM bank;
+-- SUM===-
+syntax=:-- SELECT sum(COLUMN_NAME) from table_name;
+-- --MAX & MIN=::-
+syntax=:-- SELECT max(COLUMN_NAME) from table_name;
+syntax=:-- SELECT min(COLUMN_NAME) from table_name;
+-- --AVG::-
+syntax=:-- SELECT avg(COLUMN_NAME) from table_name;
+================================================================================
+28.09.2022
+
+CONSTRAINTS==-->used to limit the type of data
+1)not null:
+2)unique:
+3)check:
+4)default:
+5)primary key:--> by default the primary key no need not null & Unique Keys
+6)Foreign key:--->which awalys represent the primary key
+i)it always refrence primary key
+*both  primary key & Foreign key always Same
+
+
+*** ROOLBACK:-> Used to undo the deleted row;
+
+***Group by::==--> used to group 
+[select * from xworkzbtm.bar group by Area;]
+
+*** Having used to filter the data after group by
+syntax==:-->select TotalBrands as sum ,BearColor from xworkzbtm.bar group by BearColor HAVING sum>32;
+
+{{{{
+EXAMPLE==-->CREATE TABLE xworkzbtm.temple(t_name varchar(30) unique,t_location varchar(35),godname varchar(30),income int not null);
+insert into xworkzbtm.temple values('Darmasthala','D Kannada','Shree Manjunatha',100);
+insert into xworkzbtm.temple values('ttd','tirupathi','Shree Venkateswara',500);
+insert into xworkzbtm.temple values('Kedarnath','Utharkand','Shree shiva',200);
+select * from xworkzbtm.temple group by t_name;
+select t_name , godname from xworkzbtm.temple group by godname;
+select income as sum , godname from xworkzbtm.temple group by godname having SUM>100;}}}}}
+
+
+29.09.2022
+                         JOINS:===--->Combaing columns from 1 or more tables
+1)inner joins:==->used to return the singular values
+==>select A.id,B.id from A INNER JOIN B ON A.id=B.id;
+syntax====-->select table1_nameOrAliays_name.column_name,table2_nameOrAliays_name from table_name2 ON table_name1.column_name=table2_name.column_name;
+
+2)Right join:==->returns all the rows from Right Tables and matchs records sigular values from right table
+syntax:==>select A.id,B.id from A right join B on A.id=B.id;
+
+3) left join:==->returns all the rows from Left Tables and matchs records sigular values from left table
+syntax:==>select A.id,B.id from A left join B on A.id=B.id;
+
+
+{{{{CREATE table A(id int);
+CREATE TABLE B(id int);
+INSERT INTO A values(1);INSERT INTO A values(2);INSERT INTO A values(3);INSERT INTO A values(4);INSERT INTO A values(5);
+INSERT INTO B values(1);INSERT INTO B values(2);INSERT INTO B values(3);INSERT INTO B values(4);INSERT INTO B values(5);
+INSERT INTO B values(6);INSERT INTO B values(7);INSERT INTO B values(8);
+
+select * from A;
+select * from B;
+-- inner join;
+select A.id,B.id from A INNER JOIN B ON A.id=B.id;
+select xworkzbtm.bank.id,xworkzbtm.bank.ifsc, xworkzbtm.bank1.id,xworkzbtm.bank1.ifsc from xworkzbtm.bank 
+inner join xworkzbtm.bank1 ON xworkzbtm.bank.id=xworkzbtm.bank1.id
+ inner join xworkzbtm.bank1 ON  xworkzbtm.bank.ifsc=xworkzbtm.bank1.ifsc;
+-- right join;
+select A.id,B.id from A right join B on A.id=B.id;
+-- left join;
+select A.id,B.id from A left join B on A.id=B.id;
+-- FULL OUTER JOIN:
+select A.id,B.id from A FULL join B on A.id=B.id; }}}}}}}}}}}
+
+===================================================
+30.09.2022
+Query::=>
+inner Query
+outer Query(imp)
+
+****Subquery:=->query in a query OR nested Query
+
+*Sub query contains outer and inner query.
+* first inner query will be exicuted AND the result of inner query will be passed to outer query.
+* inner query is written within the parenthesis.
+*outer query is the main query and inner query is the sub query.
+
+{{{{{{{{{{{{-- subquery
+select * from xworkzbtm.bank3;
+select * from xworkzbtm.customer;
+
+select c_name from xworkzbtm.customer where b_id in (
+select id from xworkzbtm.bank3 where b_name= 'sbi');
+
+update xworkzbtm.customer set c_name ='aa' where b_id in (select id from bank where b_name = 'SBI');
+  -- select c_name from xworkzbtm.customer where b_id in (101);}}}}}}}}}}}}}}}
+======================================================
+30.09.2022 	
+**) VIEWS::==-->Views can, join and simplify multiple tables into a single virtual table.
+*is vertual table  we can access all columns.
+
+example:->
+{{{
+ --  VIEWS:
+  create view vm as select  xworkzbtm.bar.BarName,xworkzbtm.bar.Area,
+  xworkzbtm.bank.name,xworkzbtm.bank.ifsc from xworkzbtm.bar,xworkzbtm.bank ;
+  select * from vm;}}}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
