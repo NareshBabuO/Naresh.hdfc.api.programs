@@ -1,0 +1,14 @@
+mysql> use hdfc_db;
+Database changed
+mysql> select * from hospital;
++----+-------------------+----------------+-------+
+| id | name              | founder        | since |
++----+-------------------+----------------+-------+
+|  1 | Jayadeva          | Manjunath      |  1970 |
+|  2 | Manipal           | Dr.TMAPai      |  1953 |
+|  3 | LakshmiHospital   | Dr.Ramswamy    |  1976 |
+|  4 | ShidarthaHospital | Dr.Mallikarjun |  1970 |
+|  6 | Shiddaganga       | Dr.Shivkumar   |  2014 |
+|  8 | Rainbow           | Promod         |  1998 |
++----+-------------------+----------------+-------+
+6 rows in set (0.00 sec)
